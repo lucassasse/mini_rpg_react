@@ -11,7 +11,7 @@ export const Header = () => {
         <p className="phrase">Life: {player.life}</p>
         <p className="phrase">Food: {player.food}</p>
         <p className="phrase">Strength: {player.strength}</p>
-        <p className="phrase">Money: {player.money}</p>
+        <p className="phrase">Money: $ {player.money}</p>
         <p className="phrase">Stamina: {player.stamina}</p>
         {/*<p className="phrase">Inventory:</p>*/}
         {

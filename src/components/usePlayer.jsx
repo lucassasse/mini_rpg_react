@@ -19,7 +19,8 @@ export const PlayerProvider = ({ children }) => {
       knife: { quantity: 5, strength: 5, cost: 5 },
       sword: { quantity: 1, strength: 20, cost: 10 },
       waterGun: { quantity: 0, strength: 1, cost: 100 },
-      gun: { quantity: 2, strength: 50, cost: 20 }
+      gun: { quantity: 2, strength: 50, cost: 20 },
+      plasma: {quantity: 10, strength: 1000, cost: 1}
     }
   })
 
