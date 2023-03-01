@@ -15,22 +15,19 @@ export const Store = () => {
     }
   }
 
-  const buyItem = item => {
+  const buyItem = itemName => {
+    const item = player.inventory[itemName]
     setPlayer({
       ...player,
       money: player.money - item.cost,
       inventory: {
         ...player.inventory,
-        item: {
-          ...player.inventory.item,
+        [itemName]: {
+          ...item,
           quantity: item.quantity + 1
         }
       }
     })
-    console.log('player.inventory', player.inventory)
-    console.log('item.quantity', item.quantity)
-    console.log('item.cost', item.cost)
-    console.log('item', item)
   }
 
   return (
@@ -45,7 +42,7 @@ export const Store = () => {
           className="button"
           key={itemName}
           disabled={player.money < item.cost}
-          onClick={() => buyItem(item)}
+          onClick={() => buyItem(itemName)}
         >
           BUY {itemName} - $ {item.cost}
         </button>
