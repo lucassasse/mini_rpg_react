@@ -22,6 +22,10 @@ export const Forest = () => {
     player.life -= monster.strength
     monster.life -= player.strength
 
+    updateSets()
+  }
+
+  function updateSets() {
     if (player.life <= 0) {
       alert('Lamento, a força do monstro foi maior que sua vida. Você morreu')
       window.location.reload()
@@ -36,25 +40,20 @@ export const Forest = () => {
         number: monster.number * 1.5
       })
       localStorage.setItem('monster', JSON.stringify(monster))
+      return
     } else {
       setPlayer({ ...player, life: player.life })
       setMonster({ ...monster, life: monster.life })
       localStorage.setItem('monster', JSON.stringify(monster))
+      return
     }
   }
 
   const usingItemInventory = itemName => {
-    const updatedInventory = {
-      ...player.inventory,
-      [itemName]: {
-        ...player.inventory[itemName],
-        quantity: player.inventory[itemName].quantity - 1
-      }
-    }
-    setPlayer({
-      ...player,
-      inventory: updatedInventory
-    })
+    monster.life -= player.inventory[itemName].strength
+    player.inventory[itemName].quantity -= 1
+    
+    updateSets()
   }
 
   return (
@@ -73,8 +72,8 @@ export const Forest = () => {
             .map(([itemName, item]) => (
               <button
                 className="btn"
-                onClick={() => usingItemInventory(itemName)}
                 key={itemName}
+                onClick={() => usingItemInventory(itemName)}
               >
                 {itemName}: {item.quantity}
               </button>
