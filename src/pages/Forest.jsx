@@ -52,7 +52,7 @@ export const Forest = () => {
   const usingItemInventory = itemName => {
     monster.life -= player.inventory[itemName].strength
     player.inventory[itemName].quantity -= 1
-    
+
     updateSets()
   }
 
@@ -80,8 +80,6 @@ export const Forest = () => {
             ))}
         </div>
       }
-      <hr />
-      <p>Sistema de batalhas em desenvolvimento!</p>
     </div>
   )
 }
